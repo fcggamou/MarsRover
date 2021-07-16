@@ -1,14 +1,22 @@
 ﻿
 namespace MarsRover.Commands
 {
-    public class RotateLeftCommand : MoveCommand
+    public class RotateLeftCommand : IMoveCommand
     {
-        public RotateLeftCommand(IPosition position) : base(position) { }
-        public override void Execute()
+        public IPosition Execute(IPosition currentPosition)
         {
-            _position.RotateLeft();
+            switch (currentPosition.Orientation)
+            {
+                case Orientation.N:
+                    return new Position(currentPosition.X, currentPosition.Y, Orientation.W);
+                case Orientation.E:
+                    return new Position(currentPosition.X, currentPosition.Y, Orientation.N);
+                case Orientation.S:
+                    return new Position(currentPosition.X, currentPosition.Y, Orientation.E);
+                default:
+                    return new Position(currentPosition.X, currentPosition.Y, Orientation.S);
+            }
         }
-
     }
 }
 

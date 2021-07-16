@@ -1,12 +1,11 @@
 ﻿using MarsRover.Commands;
-using System;
 
 namespace MarsRover
 {
     public class CommandCenter
     {
-        IRover _rover;
-        ISurface _surface;
+        private readonly IRover _rover;
+        private readonly ISurface _surface;
 
         public CommandCenter(IRover rover, ISurface surface)
         {
@@ -21,23 +20,11 @@ namespace MarsRover
                 ProcessCommand(c);
             }
         }
+
         public void ProcessCommand(char command)
         {
-            switch (command)
-            {
-                case 'R':
-                    _rover.RotateRight();
-                    break;
-                case 'L':
-                    _rover.RotateLeft();
-                    break;
-                case 'M':
-                    _rover.MoveForward();
-                    break;
-                default:
-                    throw new Exception($"Invalid command {command}");
-                    
-            }            
+            IMoveCommand moveCommand = CommandFactory.GetCommand(command);
+            _rover.Move(moveCommand);
         }
 
         public bool IsRoverInsideSurfaceBounds

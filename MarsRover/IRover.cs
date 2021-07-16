@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MarsRover.Commands;
 
 namespace MarsRover
 {
@@ -6,9 +6,7 @@ namespace MarsRover
     {
         public IPosition CurrentPosition { get; }
 
-        void MoveForward();
-        void RotateLeft();
-        void RotateRight();
-        
+        void Move(IMoveCommand moveCommand);
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using MarsRover.Commands;
 
 namespace MarsRover
 {
@@ -10,19 +10,9 @@ namespace MarsRover
             CurrentPosition = startingPosition;
         }
 
-        public void MoveForward()
+        public void Move(IMoveCommand moveCommand)
         {
-            CurrentPosition.MoveForward();
-        }
-
-        public void RotateLeft()
-        {
-            CurrentPosition.RotateLeft();            
-        }
-
-        public void RotateRight()
-        {
-            CurrentPosition.RotateRight();
+            CurrentPosition = moveCommand.Execute(CurrentPosition);
         }
     }
 }
