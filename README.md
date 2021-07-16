@@ -1,4 +1,4 @@
-# Solution to the Mars Rover problem using C# and .NET Core 5
+# Solution to the Mars Rover problem using C# and .NET 5.0
 Simple yet elegant solution to the Mars Rover programming problem.
 - Follows SOLID principles.
 - Uses Command design pattern.
