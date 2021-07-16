@@ -1,15 +1,22 @@
 ﻿using MarsRover.Commands;
-using System;
+
 
 namespace MarsRover
 {
+    /// <summary>
+    /// Factory for instantiating new <see cref="IMoveCommand"/>s.
+    /// </summary>
     public static class CommandFactory
     {
         private const char RotateRightCommand = 'R';
         private const char RotateLeftCommand = 'L';
         private const char MoveForwardCommand = 'A';
+
+        /// <summary>        
+        /// Returns the appropriate <see cref="IMoveCommand"/> based on the passed character.
+        /// </summary>
         public static bool TryGetCommand(char command, out IMoveCommand moveCommand)
-        {            
+        {
             switch (char.ToUpper(command))
             {
                 case RotateRightCommand:

@@ -1,6 +1,9 @@
 ﻿
 namespace MarsRover.Commands
 {
+    /// <summary>
+    /// An <see cref="IMoveCommand"/> to advance forward from the current position.
+    /// </summary>
     public class MoveForwardCommand : IMoveCommand
     {
         public IPosition Execute(IPosition currentPosition)

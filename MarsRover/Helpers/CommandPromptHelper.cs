@@ -2,8 +2,14 @@
 
 namespace MarsRover
 {
+    /// <summary>
+    /// Provides helper methods for processing inputs from the command prompt.
+    /// </summary>
     public static class CommandPromptHelper
     {
+        /// <summary>
+        /// Prompts the user for the information needed to create a new instance of <see cref="ICommandCenter"></see> and returns it.
+        /// </summary>        
         public static ICommandCenter InitializeCommandCenterFromPrompt()
         {
             ISurface surface = CreateSurfaceFromPrompt();
@@ -11,6 +17,9 @@ namespace MarsRover
             return new CommandCenter(rover, surface);
         }
 
+        /// <summary>
+        /// Prompts the user for the commands and returns them.
+        /// </summary>    
         public static string GetCommandsFromPrompt()
         {
             Console.WriteLine("Commands: (e.g. ARAAALA)");

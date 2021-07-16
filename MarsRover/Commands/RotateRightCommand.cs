@@ -1,5 +1,8 @@
 ﻿namespace MarsRover.Commands
 {
+    /// <summary>
+    /// An <see cref="IMoveCommand"/> to rotate left from the current position.
+    /// </summary>
     public class RotateRightCommand : IMoveCommand
     {
         public IPosition Execute(IPosition currentPosition)

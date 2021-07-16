@@ -2,12 +2,16 @@
 
 namespace MarsRover
 {
+    ///<inheritdoc cref="ICommandCenter"/>
     public class CommandCenter : ICommandCenter
     {
         private readonly IRover _rover;
         private readonly ISurface _surface;
         private bool _invalidCommandFound;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="CommandCenter"/> with the given <see cref="IRover"/> and <see cref="ISurface"/>.
+        /// </summary>
         public CommandCenter(IRover rover, ISurface surface)
         {
             _rover = rover;
