@@ -5,18 +5,25 @@ namespace MarsRover
 {
     public static class CommandFactory
     {
-        public static IMoveCommand GetCommand(char command)
-        {
-            switch (command)
+        private const char RotateRightCommand = 'R';
+        private const char RotateLeftCommand = 'L';
+        private const char MoveForwardCommand = 'A';
+        public static bool TryGetCommand(char command, out IMoveCommand moveCommand)
+        {            
+            switch (char.ToUpper(command))
             {
-                case 'R':
-                    return new RotateRightCommand();
-                case 'L':
-                    return new RotateLeftCommand();
-                case 'M':
-                    return new MoveForwardCommand();
+                case RotateRightCommand:
+                    moveCommand = new RotateRightCommand();
+                    return true;
+                case RotateLeftCommand:
+                    moveCommand = new RotateLeftCommand();
+                    return true;
+                case MoveForwardCommand:
+                    moveCommand = new MoveForwardCommand();
+                    return true;
                 default:
-                    throw new Exception($"Invalid command {command}");
+                    moveCommand = null;
+                    return false;
             }
         }
     }
