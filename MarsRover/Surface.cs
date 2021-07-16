@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace MarsRover
+﻿namespace MarsRover
 {
-    public class Surface
+    public class Surface : ISurface
     {
         public int Width { get; private set; }
         public int Length { get; private set; }

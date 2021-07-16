@@ -6,9 +6,9 @@ namespace MarsRover
     public class CommandCenter
     {
 
-        Rover _rover;
-        Surface _surface;
-        public CommandCenter(Rover rover, Surface surface)
+        IRover _rover;
+        ISurface _surface;
+        public CommandCenter(IRover rover, ISurface surface)
         {
             _rover = rover;
             _surface = surface;
@@ -33,18 +33,29 @@ namespace MarsRover
                 _rover.MoveForward();
         }
 
-        public bool IsRoverInsideSurfaceBounds()
+        public bool IsRoverInsideSurfaceBounds
         {
-            return _rover.Position.X <= _surface.Width
-                && _rover.Position.X >= 0
-                && _rover.Position.Y >= 0
-                && _rover.Position.Y <= _surface.Length;
+            get
+            {
+                return _rover.CurrentPosition.X <= _surface.Width
+                    && _rover.CurrentPosition.X >= 0
+                    && _rover.CurrentPosition.Y >= 0
+                    && _rover.CurrentPosition.Y <= _surface.Length;
+            }
         }
 
         public static bool ValidateCommand(char c)
         {
             //ToDo
             return c == 'L' || c == 'R' || c == 'M';
+        }
+
+        public IPosition RoverCurrentPosition
+        {
+            get
+            {
+                return _rover.CurrentPosition;
+            }
         }
 
     }

@@ -22,7 +22,9 @@ namespace MarsRover
             var commands = Console.ReadLine();
 
             CommandCenter c = new CommandCenter(new Rover(new Position(x, y, o)), new Surface(width, length));
-            c.ProcessCommands(commands);            
+            c.ProcessCommands(commands);
+
+            Console.WriteLine($"{c.IsRoverInsideSurfaceBounds}, {c.RoverCurrentPosition.Orientation}, ({c.RoverCurrentPosition.X},{c.RoverCurrentPosition.Y})");
         }
     }
 }

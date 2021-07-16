@@ -2,27 +2,27 @@
 
 namespace MarsRover
 {
-    public class Rover
+    public class Rover : IRover
     {
-        public Position Position { get; private set; }
-        public Rover(Position startingPosition)
+        public IPosition CurrentPosition { get; private set; }
+        public Rover(IPosition startingPosition)
         {
-            Position = startingPosition;
+            CurrentPosition = startingPosition;
         }
 
         public void MoveForward()
         {
-            Position.MoveForward();
+            CurrentPosition.MoveForward();
         }
 
         public void RotateLeft()
         {
-            Position.RotateLeft();            
+            CurrentPosition.RotateLeft();            
         }
 
         public void RotateRight()
         {
-            Position.RotateRight();
+            CurrentPosition.RotateRight();
         }
     }
 }
