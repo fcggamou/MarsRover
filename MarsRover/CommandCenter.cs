@@ -5,9 +5,9 @@ namespace MarsRover
 {
     public class CommandCenter
     {
-
         IRover _rover;
         ISurface _surface;
+
         public CommandCenter(IRover rover, ISurface surface)
         {
             _rover = rover;
@@ -23,14 +23,21 @@ namespace MarsRover
         }
         public void ProcessCommand(char command)
         {
-            if (!ValidateCommand(command))
-                throw new Exception($"Invalid command '{command}'");
-            if (command == 'R')
-                _rover.RotateRight();
-            if (command == 'L')
-                _rover.RotateLeft();
-            if (command == 'M')
-                _rover.MoveForward();
+            switch (command)
+            {
+                case 'R':
+                    _rover.RotateRight();
+                    break;
+                case 'L':
+                    _rover.RotateLeft();
+                    break;
+                case 'M':
+                    _rover.MoveForward();
+                    break;
+                default:
+                    throw new Exception($"Invalid command {command}");
+                    
+            }            
         }
 
         public bool IsRoverInsideSurfaceBounds
@@ -42,12 +49,6 @@ namespace MarsRover
                     && _rover.CurrentPosition.Y >= 0
                     && _rover.CurrentPosition.Y <= _surface.Length;
             }
-        }
-
-        public static bool ValidateCommand(char c)
-        {
-            //ToDo
-            return c == 'L' || c == 'R' || c == 'M';
         }
 
         public IPosition RoverCurrentPosition
