@@ -10,7 +10,7 @@ namespace MarsRover
         /// <summary>
         /// Prompts the user for the information needed to create a new instance of <see cref="ICommandCenter"></see> and returns it.
         /// </summary>        
-        public static ICommandCenter InitializeCommandCenterFromPrompt()
+        public static ICommandCenter InitializeCommandCenterFromPromptInput()
         {
             ISurface surface = CreateSurfaceFromPrompt();
             IRover rover = CreateRoverFromPrompt();
@@ -20,7 +20,7 @@ namespace MarsRover
         /// <summary>
         /// Prompts the user for the commands and returns them.
         /// </summary>    
-        public static string GetCommandsFromPrompt()
+        public static string GetCommandsFromPromptInput()
         {
             Console.WriteLine("Commands: (e.g. ARAAALA)");
             return Console.ReadLine();

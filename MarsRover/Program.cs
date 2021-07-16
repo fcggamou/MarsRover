@@ -8,8 +8,8 @@ namespace MarsRover
         {
             try
             {
-                ICommandCenter commandCenter = CommandPromptHelper.InitializeCommandCenterFromPrompt();
-                string commands = CommandPromptHelper.GetCommandsFromPrompt();
+                ICommandCenter commandCenter = CommandPromptHelper.InitializeCommandCenterFromPromptInput();
+                string commands = CommandPromptHelper.GetCommandsFromPromptInput();
                 commandCenter.ExecuteCommands(commands);
                 Console.WriteLine(commandCenter.GetStatus());
             }
